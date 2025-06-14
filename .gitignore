@@ -1,11 +1,13 @@
-# SecretsファイルをGitに含めない
-Sources/**/Secrets.swift
+# Secrets.swift の除外（絶対パス）
 ChronOrbit/Services/Secrets.swift
 
-# ビルド関連
+# 他のパターンでも保険で無視（念のため）
+**/Secrets.swift
+
+# Xcode ビルド関連
 DerivedData/
 build/
 *.xcuserstate
 
-# その他
+# macOS のシステムファイル
 .DS_Store
