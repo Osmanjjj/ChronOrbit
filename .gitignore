@@ -1,0 +1,11 @@
+# SecretsファイルをGitに含めない
+Sources/**/Secrets.swift
+ChronOrbit/Services/Secrets.swift
+
+# ビルド関連
+DerivedData/
+build/
+*.xcuserstate
+
+# その他
+.DS_Store

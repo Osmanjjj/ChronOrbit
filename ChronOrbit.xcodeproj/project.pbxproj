@@ -14,6 +14,16 @@
 		B756BCC22DFDCF8E00E1244A /* ChronOrbitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCC12DFDCF8E00E1244A /* ChronOrbitTests.swift */; };
 		B756BCCC2DFDCF8E00E1244A /* ChronOrbitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCCB2DFDCF8E00E1244A /* ChronOrbitUITests.swift */; };
 		B756BCCE2DFDCF8E00E1244A /* ChronOrbitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCCD2DFDCF8E00E1244A /* ChronOrbitUITestsLaunchTests.swift */; };
+		B756BCDC2DFDD1C800E1244A /* ScheduleInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCDB2DFDD1C800E1244A /* ScheduleInputView.swift */; };
+		B756BCDF2DFDD1DD00E1244A /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCDE2DFDD1DD00E1244A /* SupabaseService.swift */; };
+		B756BCE12DFDD1ED00E1244A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCE02DFDD1ED00E1244A /* Secrets.swift */; };
+		B756BCE42DFDD22800E1244A /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCE32DFDD22800E1244A /* Schedule.swift */; };
+		B756BCE72DFDDA6800E1244A /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCE62DFDDA6800E1244A /* Auth */; };
+		B756BCE92DFDDA6800E1244A /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCE82DFDDA6800E1244A /* Functions */; };
+		B756BCEB2DFDDA6800E1244A /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCEA2DFDDA6800E1244A /* PostgREST */; };
+		B756BCED2DFDDA6800E1244A /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCEC2DFDDA6800E1244A /* Realtime */; };
+		B756BCEF2DFDDA6800E1244A /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCEE2DFDDA6800E1244A /* Storage */; };
+		B756BCF12DFDDA6800E1244A /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCF02DFDDA6800E1244A /* Supabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +54,10 @@
 		B756BCC72DFDCF8E00E1244A /* ChronOrbitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChronOrbitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B756BCCB2DFDCF8E00E1244A /* ChronOrbitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronOrbitUITests.swift; sourceTree = "<group>"; };
 		B756BCCD2DFDCF8E00E1244A /* ChronOrbitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChronOrbitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B756BCDB2DFDD1C800E1244A /* ScheduleInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInputView.swift; sourceTree = "<group>"; };
+		B756BCDE2DFDD1DD00E1244A /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
+		B756BCE02DFDD1ED00E1244A /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		B756BCE32DFDD22800E1244A /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +65,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B756BCEB2DFDDA6800E1244A /* PostgREST in Frameworks */,
+				B756BCE92DFDDA6800E1244A /* Functions in Frameworks */,
+				B756BCF12DFDDA6800E1244A /* Supabase in Frameworks */,
+				B756BCE72DFDDA6800E1244A /* Auth in Frameworks */,
+				B756BCEF2DFDDA6800E1244A /* Storage in Frameworks */,
+				B756BCED2DFDDA6800E1244A /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +114,9 @@
 		B756BCAF2DFDCF8A00E1244A /* ChronOrbit */ = {
 			isa = PBXGroup;
 			children = (
+				B756BCE22DFDD1F800E1244A /* Models */,
+				B756BCDD2DFDD1D200E1244A /* Services */,
+				B756BCDA2DFDD1B200E1244A /* Views */,
 				B756BCB02DFDCF8A00E1244A /* ChronOrbitApp.swift */,
 				B756BCB22DFDCF8A00E1244A /* ContentView.swift */,
 				B756BCB42DFDCF8D00E1244A /* Assets.xcassets */,
@@ -127,6 +150,31 @@
 			path = ChronOrbitUITests;
 			sourceTree = "<group>";
 		};
+		B756BCDA2DFDD1B200E1244A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B756BCDB2DFDD1C800E1244A /* ScheduleInputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B756BCDD2DFDD1D200E1244A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B756BCDE2DFDD1DD00E1244A /* SupabaseService.swift */,
+				B756BCE02DFDD1ED00E1244A /* Secrets.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B756BCE22DFDD1F800E1244A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B756BCE32DFDD22800E1244A /* Schedule.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +191,14 @@
 			dependencies = (
 			);
 			name = ChronOrbit;
+			packageProductDependencies = (
+				B756BCE62DFDDA6800E1244A /* Auth */,
+				B756BCE82DFDDA6800E1244A /* Functions */,
+				B756BCEA2DFDDA6800E1244A /* PostgREST */,
+				B756BCEC2DFDDA6800E1244A /* Realtime */,
+				B756BCEE2DFDDA6800E1244A /* Storage */,
+				B756BCF02DFDDA6800E1244A /* Supabase */,
+			);
 			productName = ChronOrbit;
 			productReference = B756BCAD2DFDCF8A00E1244A /* ChronOrbit.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +271,9 @@
 				Base,
 			);
 			mainGroup = B756BCA42DFDCF8A00E1244A;
+			packageReferences = (
+				B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			productRefGroup = B756BCAE2DFDCF8A00E1244A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,7 +316,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B756BCE42DFDD22800E1244A /* Schedule.swift in Sources */,
 				B756BCB32DFDCF8A00E1244A /* ContentView.swift in Sources */,
+				B756BCE12DFDD1ED00E1244A /* Secrets.swift in Sources */,
+				B756BCDF2DFDD1DD00E1244A /* SupabaseService.swift in Sources */,
+				B756BCDC2DFDD1C800E1244A /* ScheduleInputView.swift in Sources */,
 				B756BCB12DFDCF8A00E1244A /* ChronOrbitApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +651,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B756BCE62DFDDA6800E1244A /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		B756BCE82DFDDA6800E1244A /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		B756BCEA2DFDDA6800E1244A /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		B756BCEC2DFDDA6800E1244A /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		B756BCEE2DFDDA6800E1244A /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		B756BCF02DFDDA6800E1244A /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B756BCE52DFDDA6800E1244A /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B756BCA52DFDCF8A00E1244A /* Project object */;
 }
