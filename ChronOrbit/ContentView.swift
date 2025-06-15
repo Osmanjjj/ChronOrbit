@@ -9,16 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+        TabView {
+            NavigationView {
+                ScheduleInputView()
+            }
+            .tabItem {
+                Label("カレンダー", systemImage: "calendar")
+            }
 
-#Preview {
-    ContentView()
+            NavigationView {
+                Text("設定画面")
+            }
+            .tabItem {
+                Label("設定", systemImage: "gear")
+            }
+        }
+    }
 }
