@@ -1,6 +1,8 @@
-struct Schedule: Identifiable, Codable {
-    let id: String
+import Foundation
+
+struct Schedule: Identifiable {
+    let id = UUID()
     let title: String
-    let start_time: String
-    let end_time: String
+    let start: Date
+    let end: Date
 }

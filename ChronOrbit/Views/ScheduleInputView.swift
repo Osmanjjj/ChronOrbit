@@ -5,9 +5,12 @@ struct ScheduleInputView: View {
     @State private var title = ""
     @State private var start = Date()
     @State private var end = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
-    @State private var showMessage = false
-    @State private var animate = false
+    @State private var showAlert = false
     @State private var selectedDate = Date()
+    @State private var schedules: [Schedule] = []
+    @State private var currentTime = Date()
+    @State private var showPieChart = false
+    @State private var selectedSchedule: Schedule?
 
     private let formatter: DateFormatter = {
         let f = DateFormatter()
@@ -16,8 +19,8 @@ struct ScheduleInputView: View {
     }()
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: 24) {
+        VStack(spacing: 24) {
+            ScrollView {
                 Text("\u{1F4C5} スケジュール登録")
                     .font(.largeTitle.bold())
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -72,15 +75,14 @@ struct ScheduleInputView: View {
                 Button(action: {
                     Task {
                         do {
+                            let schedule = Schedule(title: title, start: combine(date: selectedDate, time: start), end: combine(date: selectedDate, time: end))
                             try await SupabaseService.shared.insertSchedule(
-                                title: title,
-                                start: formatter.string(from: combine(date: selectedDate, time: start)),
-                                end: formatter.string(from: combine(date: selectedDate, time: end))
+                                title: schedule.title,
+                                start: formatter.string(from: schedule.start),
+                                end: formatter.string(from: schedule.end)
                             )
-                            withAnimation(.spring()) {
-                                showMessage = true
-                                animate = true
-                            }
+                            schedules.append(schedule)
+                            showAlert = true
                             let generator = UINotificationFeedbackGenerator()
                             generator.notificationOccurred(.success)
                         } catch {
@@ -97,21 +99,46 @@ struct ScheduleInputView: View {
                         .shadow(radius: 2)
                 }
                 .padding(.horizontal)
-                .alert(isPresented: $showMessage) {
-                    Alert(
-                        title: Text("☑️ 登録完了"),
-                        message: Text("\(formatter.string(from: combine(date: selectedDate, time: start)))〜\(formatter.string(from: combine(date: selectedDate, time: end)))"),
-                        dismissButton: .default(Text("OK"))
-                    )
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("✅ 登録完了"), message: Text("\(formatter.string(from: combine(date: selectedDate, time: start)))〜\(formatter.string(from: combine(date: selectedDate, time: end)))"), dismissButton: .default(Text("OK")))
                 }
-
-                Spacer()
             }
-            .padding(.top)
-            
+
+            Button(action: {
+                withAnimation {
+                    showPieChart.toggle()
+                }
+            }) {
+                Label("円グラフ表示", systemImage: "chart.pie.fill")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(.systemGray5))
+                    .cornerRadius(12)
+            }
+            .padding(.horizontal)
+
+            if showPieChart {
+                PieChartView(schedules: schedules, currentTime: currentTime, onTapSchedule: { tapped in
+                    selectedSchedule = tapped
+                })
+                .frame(height: 400)
+                .padding(.bottom)
+                .sheet(item: $selectedSchedule) { schedule in
+                    VStack(spacing: 16) {
+                        Text("\(schedule.title)")
+                            .font(.title2)
+                        Text("開始: \(formatter.string(from: schedule.start))")
+                        Text("終了: \(formatter.string(from: schedule.end))")
+                    }
+                    .padding()
+                }
+            }
         }
-        .tabItem {
-            Label("カレンダー", systemImage: "calendar")
+        .padding(.top)
+        .onAppear {
+            Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
+                currentTime = Date()
+            }
         }
     }
 
