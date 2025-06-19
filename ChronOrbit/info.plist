@@ -1,0 +1,4 @@
+<key>NSCalendarsUsageDescription</key>
+<string>このアプリでは予定をカレンダーに追加するため、カレンダーへのアクセスを許可してください。</string>
+<key>NSRemindersUsageDescription</key>
+<string>このアプリではリマインダー登録のため、リマインダーへのアクセスを許可してください。</string>

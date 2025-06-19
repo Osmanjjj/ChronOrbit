@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import EventKit
 
 struct ScheduleInputView: View {
     @State private var title = ""
@@ -85,6 +86,9 @@ struct ScheduleInputView: View {
                             showAlert = true
                             let generator = UINotificationFeedbackGenerator()
                             generator.notificationOccurred(.success)
+
+                            addToAppleCalendar(title: schedule.title, startDate: schedule.start, endDate: schedule.end)
+                            addToReminders(title: schedule.title, dueDate: schedule.start)
                         } catch {
                             print("❌ Supabase登録失敗: \(error)")
                         }
@@ -156,5 +160,51 @@ struct ScheduleInputView: View {
         combined.second = timeComponents.second
 
         return calendar.date(from: combined) ?? date
+    }
+
+    func addToAppleCalendar(title: String, startDate: Date, endDate: Date) {
+        let eventStore = EKEventStore()
+        eventStore.requestFullAccessToEvents { granted, error in
+            if granted && error == nil {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = title
+                event.startDate = startDate
+                event.endDate = endDate
+                event.calendar = eventStore.defaultCalendarForNewEvents
+
+                let alarm = EKAlarm(relativeOffset: -300)
+                event.addAlarm(alarm)
+
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                    print("✅ カレンダーに登録されました")
+                } catch let err {
+                    print("❌ カレンダー登録失敗: \(err)")
+                }
+            } else {
+                print("❌ カレンダーの使用が許可されていません")
+            }
+        }
+    }
+
+    func addToReminders(title: String, dueDate: Date) {
+        let eventStore = EKEventStore()
+        eventStore.requestFullAccessToReminders { granted, error in
+            if granted && error == nil {
+                let reminder = EKReminder(eventStore: eventStore)
+                reminder.title = title
+                reminder.calendar = eventStore.defaultCalendarForNewReminders()
+                reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: dueDate)
+
+                do {
+                    try eventStore.save(reminder, commit: true)
+                    print("✅ リマインダーに登録されました")
+                } catch let err {
+                    print("❌ リマインダー登録失敗: \(err)")
+                }
+            } else {
+                print("❌ リマインダーの使用が許可されていません")
+            }
+        }
     }
 }

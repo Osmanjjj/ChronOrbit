@@ -25,6 +25,7 @@
 		B756BCEF2DFDDA6800E1244A /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCEE2DFDDA6800E1244A /* Storage */; };
 		B756BCF12DFDDA6800E1244A /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = B756BCF02DFDDA6800E1244A /* Supabase */; };
 		B756BCF32DFFF3A600E1244A /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B756BCF22DFFF3A600E1244A /* GraphView.swift */; };
+		B756BCF92E0314A700E1244A /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B756BCF82E0314A700E1244A /* info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B756BCE02DFDD1ED00E1244A /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		B756BCE32DFDD22800E1244A /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		B756BCF22DFFF3A600E1244A /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		B756BCF82E0314A700E1244A /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				B756BCB22DFDCF8A00E1244A /* ContentView.swift */,
 				B756BCB42DFDCF8D00E1244A /* Assets.xcassets */,
 				B756BCB62DFDCF8D00E1244A /* Preview Content */,
+				B756BCF82E0314A700E1244A /* info.plist */,
 			);
 			path = ChronOrbit;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			files = (
 				B756BCB82DFDCF8D00E1244A /* Preview Assets.xcassets in Resources */,
 				B756BCB52DFDCF8D00E1244A /* Assets.xcassets in Resources */,
+				B756BCF92E0314A700E1244A /* info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
